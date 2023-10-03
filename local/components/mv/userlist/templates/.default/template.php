@@ -10,6 +10,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<th>Телефон</th>
 		<th>Статус</th>
 		<th>Дата последнего входа</th>
+		<th>Список имен элементов инфоблока</th>
 	</tr>
 	<?php foreach ($arResult['USERS'] as $USER) : ?>
 	<tr>
@@ -18,9 +19,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<td><?= $USER['FULL_NAME']?></td>
 		<td>  <a href="tel:<?= $USER['WORK_PHONE'] ?>"><?= $USER['WORK_PHONE'] ?></a> </td>
 		<td><?= $USER['ONLINE'] ?></td>
-		<td><?= $USER['LAST_LOGIN']?>
-
-		</td>
+		<td><?= $USER['LAST_LOGIN']?></td>
+		<td><?= is_array($USER['ELEMENTS']) ? implode(', ', $USER['ELEMENTS']) : $USER['ELEMENTS']?></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
